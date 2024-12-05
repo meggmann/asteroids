@@ -49,7 +49,7 @@ export const Asteroid = ({ asteroid, isSaved }: AsteroidProps) => {
         </div>
 
         <p>
-          <strong>Clost Approach Date:</strong> {closeApproachDate}
+          <strong>Close Approach Date:</strong> {closeApproachDate}
         </p>
 
         <p>
