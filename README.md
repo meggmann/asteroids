@@ -1,81 +1,59 @@
-# Turborepo starter
+# How to use this example
 
-This is an official starter Turborepo.
+## Install dependencies
 
-## Using this example
-
-Run the following command:
+Run the following command
 
 ```sh
-npx create-turbo@latest
+npm install
 ```
 
-## What's inside?
+## Environment variables
 
-This Turborepo includes the following packages/apps:
+Obtain an API key on https://api.nasa.gov/ and create a `.env` file in `/apps/api`
+with the following content:
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```sh
+NASA_API_KEY=your_api_key
 ```
 
-### Develop
+Otherwise the application will be using a demo key that has a limit of 30 requests per hour.
 
-To develop all apps and packages, run the following command:
 
-```
-cd my-turborepo
-pnpm dev
-```
+## Run the example
 
-### Remote Caching
+Run the following command to run the example:
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```sh
+npm run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Go to the browser
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+And go to the following URL:
 
+http://localhost:3000
+
+## Task 2 - SQL
+
+```sql
+SELECT 
+    u.name AS user_name,
+    u.email AS user_email,
+    SUM(p.price * o.quantity) AS total_spent
+FROM 
+    users u
+JOIN 
+    orders o ON u.id = o.user_id
+JOIN 
+    products p ON o.product_id = p.id
+WHERE 
+    p.category = 'Electronics'
+GROUP BY 
+    u.id, u.name, u.email
+HAVING 
+    COUNT(o.id) >= 3
+    AND SUM(p.price * o.quantity) > 1000
+ORDER BY 
+    total_spent DESC;
 ```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)

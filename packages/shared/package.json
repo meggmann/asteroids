@@ -1,15 +1,13 @@
 {
-  "name": "@asteroids/eslint-config",
+  "name": "@asteroids/shared",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./base": "./base.js",
-    "./next-js": "./next.js",
-    "./react-internal": "./react-internal.js"
+    "./schemas": "./schemas/index.ts"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15",
+    "@asteroids/typescript-config": "*",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
     "eslint": "^9.15.0",
