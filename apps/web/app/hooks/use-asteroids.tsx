@@ -130,6 +130,15 @@ export const useAsteroids = ({
     router.push(`${pathname}?${removeQueryString("sortOrder")}`);
   };
 
+  const clearQuery = () => {
+    setEndDate(undefined);
+    setStartDate(undefined);
+    setSortBy(undefined);
+    setSortOrder(undefined);
+
+    router.push(`${pathname}`);
+  }
+
   return {
     asteroids,
     isLoading,
@@ -144,5 +153,6 @@ export const useAsteroids = ({
     setSortOrder: setSortOrderAndUpdateUrl,
     sortOrder,
     refetchAsteroids,
+    clearQuery
   };
 };

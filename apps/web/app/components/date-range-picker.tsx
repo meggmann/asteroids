@@ -45,7 +45,9 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
       rangeMaxInDays &&
       (endDateTimestamp - dateTimestamp) / DAY > rangeMaxInDays
     ) {
-      alert(`The date range cannot exceed ${rangeMaxInDays} days.`);
+      alert(
+        `The date range cannot exceed ${rangeMaxInDays} days. Try a different date or clear the query and try again.`
+      );
       return;
     }
 
@@ -74,7 +76,9 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
       rangeMaxInDays &&
       (dateTimestamp - startDateTimestamp) / DAY > rangeMaxInDays
     ) {
-      alert(`The date range cannot exceed ${rangeMaxInDays} days.`);
+      alert(
+        `The date range cannot exceed ${rangeMaxInDays} days. Try a different date or clear the query and try again.`
+      );
       return;
     }
 

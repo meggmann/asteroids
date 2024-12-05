@@ -50,6 +50,7 @@ export const AsteroidsList = withRedux(
       sortOrder,
       setSortOrder,
       refetchAsteroids,
+      clearQuery,
     } = useAsteroids({
       initialAsteroids,
       initialStartDate,
@@ -110,6 +111,9 @@ export const AsteroidsList = withRedux(
             onSetSortOrder={handleSortOrderChange}
             sortingOptions={sortingOptions}
           />
+          <button onClick={clearQuery} className="h-[42] px-4 inline-flex items-center py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
+            Clear Query
+          </button>
           <Link
             href={`/favourites`}
             className="h-[42] px-4 inline-flex items-center py-2 bg-green-500 text-white rounded hover:bg-blue-600"
